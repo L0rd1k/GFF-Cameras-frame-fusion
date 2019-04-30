@@ -33,8 +33,8 @@ build/Debug/GNU-Linux/main.o: main.cpp \
  /usr/local/opencv_3.2/include/opencv2/imgproc/types_c.h \
  /usr/local/opencv_3.2/include/opencv2/imgcodecs/imgcodecs_c.h \
  /usr/local/opencv_3.2/include/opencv2/videoio/videoio_c.h \
- /usr/local/opencv_3.2/include/opencv2/imgproc.hpp BaseVideoFusion.h \
- GFF.h /usr/local/opencv_3.2/include/opencv2/ximgproc.hpp \
+ /usr/local/opencv_3.2/include/opencv2/imgproc.hpp GFF.h \
+ /usr/local/opencv_3.2/include/opencv2/ximgproc.hpp \
  /usr/local/opencv_3.2/include/opencv2/ximgproc/edge_filter.hpp \
  /usr/local/opencv_3.2/include/opencv2/ximgproc/disparity_filter.hpp \
  /usr/local/opencv_3.2/include/opencv2/calib3d.hpp \
@@ -55,7 +55,8 @@ build/Debug/GNU-Linux/main.o: main.cpp \
  /usr/local/opencv_3.2/include/opencv2/ximgproc/lsc.hpp \
  /usr/local/opencv_3.2/include/opencv2/ximgproc/paillou_filter.hpp \
  /usr/local/opencv_3.2/include/opencv2/ximgproc/fast_line_detector.hpp \
- /usr/local/opencv_3.2/include/opencv2/ximgproc/deriche_filter.hpp
+ /usr/local/opencv_3.2/include/opencv2/ximgproc/deriche_filter.hpp \
+ BaseVideoFusion.h BaseImageFusion.h
 
 /usr/local/opencv_3.2/include/opencv2/core.hpp:
 
@@ -127,8 +128,6 @@ build/Debug/GNU-Linux/main.o: main.cpp \
 
 /usr/local/opencv_3.2/include/opencv2/imgproc.hpp:
 
-BaseVideoFusion.h:
-
 GFF.h:
 
 /usr/local/opencv_3.2/include/opencv2/ximgproc.hpp:
@@ -174,3 +173,7 @@ GFF.h:
 /usr/local/opencv_3.2/include/opencv2/ximgproc/fast_line_detector.hpp:
 
 /usr/local/opencv_3.2/include/opencv2/ximgproc/deriche_filter.hpp:
+
+BaseVideoFusion.h:
+
+BaseImageFusion.h:

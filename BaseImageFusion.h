@@ -19,10 +19,12 @@
 class BaseImageFusion : public GFF {
 public:
     BaseImageFusion();
-    void BaseExecution() override {};
+    void BaseExecution() override;
     virtual ~BaseImageFusion();
+    void ImagesList(vector<Mat> &vecImages);
 private:
-
+    vector<Mat> vecImages;
+    string pathFolder;
 };
 
 #endif /* BASEIMAGEFUSION_H */

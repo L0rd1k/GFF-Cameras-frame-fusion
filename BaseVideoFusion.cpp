@@ -18,27 +18,11 @@ BaseVideoFusion::BaseVideoFusion() {
     url2 = "/opt/data/videos/OES-footage/ch1_2018.12.06_12.46.19.avi";
 }
 
-int BaseVideoFusion::CheckImagesSize(vector<Mat> &vecImages) {
-    for (vector<Mat>::iterator iter = vecImages.begin(); iter != vecImages.end(); ++iter) {
-        if (iter != vecImages.begin()) {
-            if (iter->size() != vecImages.begin()->size()) {
-                std::cout << "Video frames have different size!!" << std::endl;
-                return -1;
-            }
-        }
-        (*iter).convertTo(*iter, CV_32FC3);
-    }
-}
 
 void BaseVideoFusion::BaseExecution() {
     VideoCapture cap1(url1);
     VideoCapture cap2(url2);
     while (true) {
-
-
-     
-
-
         cap1 >> frame1;
         cap2 >> frame2;
         vector<Mat> vecImages;
@@ -52,32 +36,20 @@ void BaseVideoFusion::BaseExecution() {
         LaplacianOfTheImage(*vecI_gray, vecH);
         vector<Mat> vecS;
         Saliency(vecH, vecS);
-
-        
-
-        
         high_resolution_clock::time_point beg = high_resolution_clock::now();
         vector<Mat> vecP;
         BinaryWeights(vecS, vecP);
         vector<Mat> vecWB;
         vector<Mat> vecWD;
         GFFOptimization(vecP, *vecI_gray, vecWB, vecWD);
-        
-        
-        
         Mat F;
         Fusion(vecImages, vecWB, vecWD, F);
         F.convertTo(F, CV_8U);
-        
         high_resolution_clock::time_point end = high_resolution_clock::now();       
         duration<double> time_res = duration_cast<duration<double>>(end - beg);
         std::cout << "it takes in total time: " << time_res.count() << " seconds." << std::endl;
-        
         cv::imshow("F", F);
         waitKey(1);
-
-
-
     }
 }
 

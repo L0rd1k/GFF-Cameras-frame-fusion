@@ -22,7 +22,6 @@ public:
     void BaseExecution() override;
     virtual ~BaseVideoFusion();
 private:
-    int CheckImagesSize(vector<Mat> &vecImages);
     std::string url1,url2;
     VideoCapture cap1,cap2;
     Mat frame1,frame2;

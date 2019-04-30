@@ -42,6 +42,7 @@ public:
     void GFFOptimization(const vector<Mat> &vecW, const vector<Mat> &vecImage_gray, vector<Mat> &vecWB, vector<Mat> &vecWD);
     void GFFDecomposition(const vector<Mat>& vecImage, vector<Mat>& vecB, vector<Mat>& vecD);
     void Fusion(const vector<Mat>& vecImage, vector<Mat>& vecWB, vector<Mat>& vecWD, Mat& F);
+    int CheckImagesSize(vector<Mat> &vecImages);
 private:
 };
 

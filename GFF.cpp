@@ -74,9 +74,8 @@ void GFF::BinaryWeights(const vector<Mat> &vecSaliency, vector<Mat> &vecW) {
 
 void GFF::GFFOptimization(const vector<Mat> &vecW, const vector<Mat> &vecImage_gray, vector<Mat> &vecWB, vector<Mat> &vecWD) {
     high_resolution_clock::time_point beg = high_resolution_clock::now();
-    //vecWB.reserve(vecW.size());
-    //vecWD.reserve(vecW.size());
-    cout << "VECSIZE" << vecW.size() << endl;
+    vecWB.reserve(vecW.size());
+    vecWD.reserve(vecW.size());
 
     for (size_t it = 0; it < vecW.size(); it++) {
         Mat wb, wd;
@@ -85,12 +84,9 @@ void GFF::GFFOptimization(const vector<Mat> &vecW, const vector<Mat> &vecImage_g
         vecWB.push_back(wb);
         vecWD.push_back(wd);
     }
-
     //high_resolution_clock::time_point beg = high_resolution_clock::now();
-
     const int *width = &vecW.begin()->cols;
     const int *height = &vecW.begin()->rows;
-
     for (int x = 0; x < *height; ++x) {
         for (int y = 0; y < *width; ++y) {
             float sumB = 0.0f, sumD = 0.0f;
@@ -148,14 +144,13 @@ void GFF::Fusion(const vector<Mat>& vecImage, vector<Mat>& vecWB, vector<Mat>& v
         std::vector<cv::Mat> vec;
         for (size_t i = 0; i < vecWB.size(); ++i) {
             vec.clear();
-
             for (int it = 0; it < 3; it++) {
                 vec.push_back(vecWB[i]);
             }
             cv::merge(vec, vecWB[i]);
             vec.clear();
             for (int it = 0; it < 3; it++) {
-                 vec.push_back(vecWD[i]);
+                vec.push_back(vecWD[i]);
             }
             cv::merge(vec, vecWD[i]);
         }
@@ -172,3 +167,14 @@ void GFF::Fusion(const vector<Mat>& vecImage, vector<Mat>& vecWB, vector<Mat>& v
 
 }
 
+int GFF::CheckImagesSize(vector<Mat>& vecImages) {
+    for (vector<Mat>::iterator iter = vecImages.begin(); iter != vecImages.end(); ++iter) {
+        if (iter != vecImages.begin()) {
+            if (iter->size() != vecImages.begin()->size()) {
+                std::cout << "Video frames have different size!!" << std::endl;
+                return -1;
+            }
+        }
+        (*iter).convertTo(*iter, CV_32FC3);
+    }
+}

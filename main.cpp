@@ -18,8 +18,9 @@
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
-//#include "GFF.h"
+#include "GFF.h"
 #include "BaseVideoFusion.h"
+#include "BaseImageFusion.h"
 
 using namespace cv;
 using namespace std;
@@ -30,17 +31,20 @@ int main(int argc, char** argv) {
     std::cout << "2 - Video fusion" << std::endl;
     cin >> chooseValue;
     
-    BaseVideoFusion *bf = new BaseVideoFusion();
+    GFF *_guidefilt;
     
     switch(chooseValue)
     {
         case 1:
         {
+            _guidefilt = new BaseImageFusion();
+            _guidefilt->BaseExecution();
             break;
         }
         case 2:
         {
-            bf->BaseExecution();
+            _guidefilt = new BaseVideoFusion();
+            _guidefilt->BaseExecution();
             break;
         }
         default:
