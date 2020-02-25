@@ -30,11 +30,10 @@ int main(int argc, char** argv) {
     std::cout << "1 - Images fusion" << std::endl;
     std::cout << "2 - Video fusion" << std::endl;
     cin >> chooseValue;
-    
-    GFF *_guidefilt;
-    
-    switch(chooseValue)
-    {
+
+    GFF *_guidefilt = nullptr;
+
+    switch (chooseValue) {
         case 1:
         {
             _guidefilt = new BaseImageFusion();
@@ -50,7 +49,7 @@ int main(int argc, char** argv) {
         default:
             return 0;
     }
-    
+    delete _guidefilt;
     return 0;
 }
 

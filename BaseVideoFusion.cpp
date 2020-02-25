@@ -14,10 +14,12 @@
 #include "BaseVideoFusion.h"
 
 BaseVideoFusion::BaseVideoFusion() {
-    url1 = "/opt/data/videos/OES-footage/ch0_2018.12.06_12.46.19.avi";
-    url2 = "/opt/data/videos/OES-footage/ch1_2018.12.06_12.46.19.avi";
+    url1 = "/opt/data/video/OES-footage/ch0_2018.12.06_12.46.19.avi";
+    url2 = "/opt/data/video/OES-footage/ch1_2018.12.06_12.46.19.avi";
 }
 
+BaseVideoFusion::~BaseVideoFusion() {   
+}
 
 void BaseVideoFusion::BaseExecution() {
     VideoCapture cap1(url1);
@@ -53,6 +55,4 @@ void BaseVideoFusion::BaseExecution() {
     }
 }
 
-BaseVideoFusion::~BaseVideoFusion() {
-}
 

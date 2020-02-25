@@ -14,15 +14,15 @@
 #include "BaseImageFusion.h"
 
 BaseImageFusion::BaseImageFusion() {
-    pathFolder = "/home/ilya/NetBeansProjects/VideoToolbox/data/colourset/";
+    pathFolder = "/home/ilya/NetBeansProjects/ImageToolkit/Images/";
 }
 
 BaseImageFusion::~BaseImageFusion() {
 }
 
 void BaseImageFusion::ImagesList(vector<Mat> &vecImages) {
-    vecImages.push_back(cv::imread(pathFolder + "visible.png"));
-    vecImages.push_back(cv::imread(pathFolder + "visible-color.png"));
+    vecImages.push_back(cv::imread(pathFolder + "personTV.png"));
+    vecImages.push_back(cv::imread(pathFolder + "personIK.png"));
 }
 
 void BaseImageFusion::BaseExecution() {
